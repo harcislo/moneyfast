@@ -1,0 +1,128 @@
+:global(.ant-select-selector) {
+    border-radius: 15px !important;
+    height: 55px !important;
+    display: flex;
+    align-items: center;
+    z-index: 0 !important;
+}
+
+.fields {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.input {
+    border-radius: 15px !important;
+    height: 55px;
+    display: flex;
+    align-items: center;
+    width: 370px;
+    font-weight: 500;
+    font-size: 20px !important;
+}
+
+.step3Fields {
+    width: 55%;
+}
+
+.inputSmallText {
+    border-radius: 15px !important;
+    height: 55px;
+    display: flex;
+    align-items: center;
+    width: 370px;
+    font-weight: 500;
+    font-size: 16px !important;
+}
+
+.changeColumn {
+    display: flex;
+    flex-direction: column;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.step4Wrapper {
+    padding-left: 64px;
+}
+
+.btn button {
+    padding: 18px 84px;
+    border-radius: 15px;
+    color: #ffffff;
+    font-weight: 700;
+    background-color: #295BF4;
+    border: none;
+    transition: 0.25s;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.btn button:hover {
+    background-color: #3869ff;
+}
+
+.select {
+    width: 370px;
+}
+
+.h1Text {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 39px;
+    color: #0F1221;
+    text-align: center;
+}
+
+
+.input::-webkit-outer-spin-button,
+.input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+@media (max-width: 1040px) {
+    .fields {
+        flex-direction: column;
+    }
+
+    .step3Fields {
+        width: 90%;
+    }
+
+    .step4Wrapper {
+        padding-left: 0;
+    }
+}
+
+@media (max-width: 550px) {
+    .step3Fields {
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .input {
+        width: 100%;
+    }
+
+    .select {
+        width: 100%;
+    }
+
+    .h1Text {
+        font-size: 24px;
+
+    }
+
+}
+
