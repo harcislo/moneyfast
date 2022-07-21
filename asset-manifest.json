@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/moneyfast/static/css/main.ee0b4f3d.css",
-    "main.js": "/moneyfast/static/js/main.26f2d218.js",
+    "main.js": "/moneyfast/static/js/main.970257c3.js",
     "static/media/gilroy-medium.ttf": "/moneyfast/static/media/gilroy-medium.f9f832b0ed3f1ab138c9.ttf",
     "static/media/gilroy-regular.ttf": "/moneyfast/static/media/gilroy-regular.b91b0127c56a8e5f9e83.ttf",
     "static/media/gilroy-bold.ttf": "/moneyfast/static/media/gilroy-bold.b900325e44ec0c673e88.ttf",
@@ -13,10 +13,10 @@
     "static/media/Questions.png": "/moneyfast/static/media/Questions.5755396c81366d11b453.png",
     "index.html": "/moneyfast/index.html",
     "main.ee0b4f3d.css.map": "/moneyfast/static/css/main.ee0b4f3d.css.map",
-    "main.26f2d218.js.map": "/moneyfast/static/js/main.26f2d218.js.map"
+    "main.970257c3.js.map": "/moneyfast/static/js/main.970257c3.js.map"
   },
   "entrypoints": [
     "static/css/main.ee0b4f3d.css",
-    "static/js/main.26f2d218.js"
+    "static/js/main.970257c3.js"
   ]
 }
