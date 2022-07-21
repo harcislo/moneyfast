@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/moneyfast/static/css/main.ee0b4f3d.css",
+    "main.js": "/moneyfast/static/js/main.43b924cf.js",
+    "static/media/gilroy-medium.ttf": "/moneyfast/static/media/gilroy-medium.f9f832b0ed3f1ab138c9.ttf",
+    "static/media/gilroy-regular.ttf": "/moneyfast/static/media/gilroy-regular.b91b0127c56a8e5f9e83.ttf",
+    "static/media/gilroy-bold.ttf": "/moneyfast/static/media/gilroy-bold.b900325e44ec0c673e88.ttf",
+    "static/media/Bitcoin.png": "/moneyfast/static/media/Bitcoin.7232be9fc09e07e96d30.png",
+    "static/media/Survey-amico.png": "/moneyfast/static/media/Survey-amico.f218f828ad729afe4b73.png",
+    "static/media/qr-code.png": "/moneyfast/static/media/qr-code.3c72a24fcceb92b139cf.png",
+    "static/media/telegram-black.png": "/moneyfast/static/media/telegram-black.1b722a57c2ce8ff2980a.png",
+    "static/media/mail-black.png": "/moneyfast/static/media/mail-black.cb392634839fbe479f91.png",
+    "static/media/Questions.png": "/moneyfast/static/media/Questions.5755396c81366d11b453.png",
+    "index.html": "/moneyfast/index.html",
+    "main.ee0b4f3d.css.map": "/moneyfast/static/css/main.ee0b4f3d.css.map",
+    "main.43b924cf.js.map": "/moneyfast/static/js/main.43b924cf.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ee0b4f3d.css",
+    "static/js/main.43b924cf.js"
+  ]
+}
