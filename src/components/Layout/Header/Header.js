@@ -15,7 +15,8 @@ const Header = () => {
         <div style={{ top: burgerActive ? 0 : "-100%" }} className={styles.nav}>
           <div className={styles.navLinks}>
             <NavLink
-              to="qa"
+              onClick={() => setBurgerActive(false)}
+              to="/qa"
               className={styles.link}
               style={({ isActive }) => {
                 if (isActive && burgerActive) {
@@ -31,7 +32,8 @@ const Header = () => {
               Вопросы и ответы
             </NavLink>
             <NavLink
-              to="help"
+              onClick={() => setBurgerActive(false)}
+              to="/help"
               className={styles.link}
               style={({ isActive }) => {
                 if (isActive && burgerActive) {
@@ -47,7 +49,8 @@ const Header = () => {
               Помощь
             </NavLink>
             <NavLink
-              to="reviews"
+              onClick={() => setBurgerActive(false)}
+              to="/reviews"
               className={styles.link}
               style={({ isActive }) => {
                 if (isActive && burgerActive) {
