@@ -1,0 +1,75 @@
+.wrapper {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 30px 0;
+}
+
+.reviews {
+    width: 840px;
+
+}
+
+.form {
+    max-width: 470px;
+}
+
+.h1Text {
+    font-size: 32px;
+    font-weight: 700;
+    color: #0F1221;
+}
+
+.formText {
+    margin-top: 35px;
+    color: #000000;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.input {
+    border-radius: 15px !important;
+    height: 55px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    font-weight: 400;
+    font-size: 16px !important;
+    background-color: #F3F5F7 !important;
+}
+
+.form button {
+    padding: 18px 84px;
+    border-radius: 15px;
+    color: #ffffff;
+    font-weight: 700;
+    background-color: #295BF4;
+    border: none;
+    transition: 0.25s;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.formRating {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 20px 0 25px 0;
+}
+
+.pagination {
+    margin-top: 32px
+
+}
+
+
+@media (max-width: 700px) {
+    .wrapper {
+        padding: 64px 16px 64px 16px ;
+    }
+    .h1Text {
+        font-size: 24px;
+        font-weight: 700;
+    }
+}

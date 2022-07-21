@@ -1,0 +1,65 @@
+.wrapper {
+    padding: 60px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+}
+.questions{
+    width: 840px;
+    padding: 32px;
+    background-color: #F3F5F7;
+    border-radius: 30px;
+
+}
+
+.collapse {
+    border: none !important;
+    background-color: inherit !important;
+}
+
+.h1Text {
+    font-size: 32px;
+    font-weight: 700;
+    color: #0F1221;
+}
+
+.help {
+    display: flex;
+    flex-direction: column;
+    max-width: 470px;
+    padding-top: 32px;
+
+}
+
+.smText {
+    color: #0F1221;
+    font-weight: 400;
+    font-size: 16px;
+    text-align: left;
+    margin-top: 24px;
+}
+
+.qaEmail {
+    display: flex;
+    flex-direction: column;
+}
+
+@media (max-width: 700px) {
+    .wrapper {
+        padding: 64px 16px 64px 16px ;
+    }
+
+    .h1Text {
+        font-size: 24px;
+        font-weight: 700;
+    }
+
+
+}
+
+@media (max-width: 1420px) {
+    .help {
+        margin-top: 50px;
+    }
+}

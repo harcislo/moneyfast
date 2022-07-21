@@ -8,7 +8,7 @@ const Layout = ({ children }) => {
       style={{
         display: "flex",
         flexDirection: "column",
-        minHeight: "100vh",
+        minHeight: "100vh"
       }}
     >
       <div
@@ -16,7 +16,7 @@ const Layout = ({ children }) => {
           position: "sticky",
           top: 0,
           width: "100%",
-          zIndex: 5,
+          zIndex: 5
         }}
       >
         <Header />
@@ -26,7 +26,7 @@ const Layout = ({ children }) => {
 
       <div
         style={{
-          marginTop: "auto",
+          marginTop: "auto"
         }}
       >
         <Footer />

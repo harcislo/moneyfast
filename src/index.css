@@ -42,3 +42,54 @@ code {
 .ant-select-selector{
   border-radius: 15px;
 }
+
+.ant-collapse-header {
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  align-items: center !important;
+  padding: 24px 0 !important;
+  border-bottom:1px solid #d9d9d9;
+}
+
+.ant-collapse-header-text {
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.ant-collapse-expand-icon {
+  /*font-size: 16px;*/
+  color: #295BF4;
+}
+
+.ant-collapse-arrow {
+  font-size: 16px !important;
+}
+
+.ant-collapse-content-box {
+  font-size: 16px;
+  color: #B7B7B7 !important;
+  padding-left: 0 !important;
+}
+
+.ant-collapse-item {
+  border-bottom: none !important;
+}
+
+.ant-collapse-content {
+  border: none !important;
+  background-color: inherit !important;
+}
+
+.ant-rate {
+  color: #295BF4 !important;
+}
+
+.ant-pagination-options {
+  display: none !important;
+}
+
+@media (max-width: 700px) {
+  .ant-collapse-header-text {
+    font-size: 16px;
+  }
+}

@@ -36,6 +36,8 @@ const Step2 = ({ nextStep }) => {
             Введите данные для завершения обмена
           </span>
           <Input
+            value={email}
+
             className={styles.input}
             onChange={(e) => setEmail(e.target.value)}
             style={{
@@ -44,6 +46,7 @@ const Step2 = ({ nextStep }) => {
             placeholder="Введите email"
           />
           <Input
+            value={fio}
             className={styles.input}
             onChange={(e) => setFio(e.target.value)}
             style={{
@@ -52,6 +55,7 @@ const Step2 = ({ nextStep }) => {
             placeholder="Введите ФИО получателя"
           />
           <Input
+            value={phoneNumber}
             className={styles.input}
             onChange={(e) => setPhoneNumber(e.target.value)}
             style={{

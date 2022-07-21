@@ -1,0 +1,52 @@
+.wrapper {
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+}
+.text1 {
+    display: flex;
+    justify-content: center;
+}
+.text2 {
+    display: flex;
+    justify-content: center;
+}
+.text1 span {
+    font-size: 32px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.text2 span {
+    font-size: 16px;
+    color: #B7B7B7;
+    text-align: center;
+}
+
+.contact {
+    display: flex;
+    align-items: center;
+}
+
+.contact img {
+    margin-right: 16px;
+}
+
+.contact span {
+    font-weight: 500;
+    font-size: 18px;
+}
+
+.spanNumber {
+    margin-left: 35px;
+}
+
+@media (max-width: 700px) {
+    .text1 span {
+        font-size: 24px;
+        font-weight: 700;
+    }
+}

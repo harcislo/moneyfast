@@ -1,0 +1,31 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    padding: 15px 0;
+    border-bottom: 1px solid #B7B7B7;
+    background-color: white;
+    max-width: 840px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.name {
+    font-weight: 500;
+    font-size: 16px;
+    color: #0F1221;
+}
+.date {
+    font-size: 16px;
+    color: #B7B7B7;
+    margin-left: 16px;
+}
+
+.text {
+    margin-top: 8px;
+    font-size: 16px;
+    max-width: 620px;
+}

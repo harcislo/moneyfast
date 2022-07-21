@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "./Header.module.css";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 import burgerIcon from "../../../assets/icons/burger.png";
 import closeIcon from "../../../assets/icons/close.png";
@@ -11,7 +11,7 @@ const Header = () => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.content}>
-        <span className={styles.logo}>moneyfast</span>
+        <Link to={'/'} className={styles.logo}>moneyfast</Link>
         <div style={{ top: burgerActive ? 0 : "-100%" }} className={styles.nav}>
           <div className={styles.navLinks}>
             <NavLink

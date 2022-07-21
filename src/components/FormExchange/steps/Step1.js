@@ -96,6 +96,7 @@ const Step1 = ({ nextStep }) => {
 
           <Input
             className={styles.input}
+            value={sumCrypts}
             onChange={(e) => setSumCrypts(e.target.value)}
             style={{
               marginTop: 24,
@@ -165,6 +166,7 @@ const Step1 = ({ nextStep }) => {
 
           <Input
             className={styles.input}
+            value={sumBank}
             type={"number"}
             style={{
               marginTop: 24,
