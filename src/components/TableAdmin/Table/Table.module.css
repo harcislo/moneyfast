@@ -1,0 +1,11 @@
+.statusTable:hover {
+    cursor: pointer;
+}
+
+.tableApplication{
+    padding: 15px 15px 15px 0;
+
+}
+.tableApplication:hover {
+    cursor: pointer;
+}

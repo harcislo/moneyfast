@@ -1,0 +1,43 @@
+.wrapper {
+    width: 100%;
+    max-width: 878px;
+    white-space: nowrap;
+    overflow-x: scroll;
+    scroll-snap-type: x proximity;
+
+}
+
+.wrapper {
+    scrollbar-width: none; /* firefox */
+}
+.wrapper::-webkit-scrollbar { /* webkit */
+    width: 0;
+    height: 0;
+}
+
+.item {
+    scroll-snap-align: start;
+
+    margin-right: 32px;
+    display: inline-block;
+    width: 150px;
+    text-align: center;
+    padding: 8px 0;
+    border-radius: 20px;
+    border: 1px solid #295BF4;
+    font-size: 16px;
+    transition: 0.25s;
+}
+
+.item:hover {
+    cursor: pointer;
+    background-color: #295BF4;
+    color: #ffffff;
+}
+
+@media (max-width: 900px) {
+    .item {
+        width: 140px;
+        padding: 5px 0;
+    }
+}

@@ -88,6 +88,15 @@ code {
   display: none !important;
 }
 
+.ant-form-item-control-input-content {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.ant-table-pagination-right {
+  justify-content: center !important;
+}
+
 @media (max-width: 700px) {
   .ant-collapse-header-text {
     font-size: 16px;

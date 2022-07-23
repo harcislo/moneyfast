@@ -1,90 +1,99 @@
 .wrapper {
-    height: 80px;
-    box-shadow: 0px 1px 20px rgba(0, 0, 0, 0.1);
-    padding: 0 70px;
-    display: flex;
-    align-items: center;
-    background-color: #ffffff;
+  height: 80px;
+  box-shadow: 0px 1px 20px rgba(0, 0, 0, 0.1);
+  padding: 0 70px;
+  display: flex;
+  align-items: center;
+  background-color: #ffffff;
 }
 
 .logo:hover {
-    color: #295BF4;
+  color: #295bf4;
 }
 
 .content {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 900px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 900px;
 }
 
 .logo {
-    font-weight: 700;
-    color: #295BF4;
-    font-size: 32px;
+  font-weight: 700;
+  color: #295bf4;
+  font-size: 32px;
 }
 
 .nav {
-
-    width: 490px;
+  width: 490px;
 }
 
 .navLinks {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .link {
-    font-size: 16px;
-    color: #0F1221;
-    text-decoration: none;
-    font-weight: 400;
-    line-height: 19px;
+  font-size: 16px;
+  color: #0f1221;
+  text-decoration: none;
+  font-weight: 400;
+  line-height: 19px;
+}
+
+.logout {
+  position: absolute;
+  right: 32px;
 }
 
 .burger {
-    display: none;
+  display: none;
 }
 
 @media (max-width: 900px) {
-    .wrapper {
-        padding: 0 16px;
-        height: 80px;
+  .wrapper {
+    padding: 0 16px;
+    height: 80px;
+  }
 
-    }
+  .burger {
+    display: block;
+    position: absolute;
+    top: 35px;
+    right: 35px;
+  }
 
-    .burger {
-        display: block;
-        position: absolute;
-        top: 35px;
-        right: 35px;
-    }
+  .nav {
+    position: fixed;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    /*padding-top: 80px;*/
+    transition: all 0.3s ease 0s;
+  }
 
-    .nav {
-        position: fixed;
-        top: -100%;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.9);
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        /*padding-top: 80px;*/
-        transition: all 0.3s ease 0s;
-    }
+  .navLinks {
+    margin-top: 90px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
 
-    .navLinks {
-        margin-top: 90px;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-    }
+  .link {
+    color: #ffffff;
+    margin-bottom: 24px;
+  }
 
-    .link {
-        color: #ffffff;
-        margin-bottom: 24px;
-    }
+}
 
+@media (max-width: 1100px) {
+  .logout {
+    position: initial;
+  }
 }

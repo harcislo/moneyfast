@@ -26,9 +26,6 @@ const Help = () => {
           <span className={styles.spanNumber}>+79897904681</span>
         </div>
       </div>
-
-
-
     </div>
   );
 };

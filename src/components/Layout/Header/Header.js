@@ -4,9 +4,13 @@ import { Link, NavLink } from "react-router-dom";
 
 import burgerIcon from "../../../assets/icons/burger.png";
 import closeIcon from "../../../assets/icons/close.png";
+import { useDispatch, useSelector } from "react-redux";
+import { removeToken } from "../../../store/userSlice";
 
 const Header = () => {
   const [burgerActive, setBurgerActive] = useState(false);
+  const token = useSelector(state => state.user.token)
+  const dispatch = useDispatch()
 
   return (
     <div className={styles.wrapper}>
@@ -65,6 +69,50 @@ const Header = () => {
             >
               Отзывы
             </NavLink>
+            { (token || localStorage.getItem('token')) &&
+              <NavLink
+                onClick={() => setBurgerActive(false)}
+                to="/admin"
+                className={styles.link}
+                style={({ isActive }) => {
+                  if (isActive && burgerActive) {
+                    return {
+                      fontWeight: 700,
+                      color: "#ffffff",
+                    };
+                  } else if (isActive && !burgerActive) {
+                    return { fontWeight: 500 };
+                  }
+                }}
+              >
+                Заявки
+              </NavLink>
+            }
+
+            { (token || localStorage.getItem('token')) &&
+              <NavLink
+
+                onClick={() => {
+                  setBurgerActive(false)
+                  localStorage.removeItem('token')
+                  dispatch(removeToken())
+                }}
+                to="/"
+                className={styles.link + ' ' + styles.logout}
+                style={({ isActive }) => {
+                  if (isActive && burgerActive) {
+                    return {
+                      fontWeight: 700,
+                      color: "#ffffff",
+                    };
+                  } else if (isActive && !burgerActive) {
+                    return { fontWeight: 500 };
+                  }
+                }}
+              >
+                Выйти
+              </NavLink>
+            }
           </div>
         </div>
         <div className={styles.burger}>
