@@ -39,12 +39,12 @@ const Step1 = ({ nextStep, reverse, setReverse }) => {
 
   const [banks, setBanks] = useState([
     {id: 'RUB', img: rubIcon, name: "Русский рубль" },
-    {id: 'BYR', img: belRubIcon, name: "Беллоруский рубль" },
-    {id: 'KZT', img: tengeIcon, name: "Тенге" },
+    // {id: 'BYR', img: belRubIcon, name: "Беллоруский рубль" },
+    // {id: 'KZT', img: tengeIcon, name: "Тенге" },
   ]);
 
   const [selectCrypt, setSelectCrypt] = useState("");
-  const [selectBank, setSelectBank] = useState("");
+  const [selectBank, setSelectBank] = useState("RUB");
   const [sumCrypts, setSumCrypts] = useState("");
   const [sumBank, setSumBank] = useState("");
 

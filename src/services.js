@@ -2,7 +2,8 @@ import axios from "axios";
 import { apiUrl, coinLayerUrl } from "./constants";
 
 export const getExchangeRate = async (currency, target) => {
-  const rate = await axios.get(`${coinLayerUrl}&target=${target}`);
+  // const rate = await axios.get(`${coinLayerUrl}&target=${target}`);
+  const rate = await axios.get(`${coinLayerUrl}&target=RUB`);
   return rate.data.rates[currency];
 };
 // fromExchange(pin):"ETH"

@@ -38,7 +38,7 @@ const Reviews = () => {
         <div style={{
           marginTop: 16
         }} className={styles.comments}>
-          {comments.map((el, i) => <Comment name={el.name} rating={el.rating} date={el.date} text={el.text}/>)}
+          {comments.map((el, i) => <Comment name={el.userName} rating={el.rating} date={new Date(el.createdAt).toLocaleString()} text={el.text}/>)}
         </div>
         {/*<div className={styles.pagination}>*/}
         {/*  <Pagination*/}

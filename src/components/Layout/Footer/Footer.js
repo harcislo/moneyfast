@@ -17,11 +17,15 @@ const Footer = () => {
       <div className={styles.footerBlock}>
         <div>
           <img src={emailIcon} alt="email" />
-          <span className={styles.contactText}>Guuworking@proton.me</span>
+          <a href="mailto:Guuworking@proton.me">
+            <span className={styles.contactText}>Guuworking@proton.me</span>
+          </a>
         </div>
         <div>
           <img src={telegramIcon} alt="telegram" />
-          <span className={styles.contactText}>+79897904681</span>
+          <a href="tel:+79897904681">
+            <span className={styles.contactText}>+79897904681</span>
+          </a>
         </div>
       </div>
     </div>

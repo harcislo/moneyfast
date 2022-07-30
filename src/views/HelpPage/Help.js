@@ -18,12 +18,16 @@ const Help = () => {
       }}>
         <div className={styles.contact}>
           <img width={18} src={mailPng} alt="mailPng" />
+          <a href="mailto:Guuworking@proton.me">
           <span>Guuworking@proton.me</span>
+          </a>
         </div>
 
         <div className={styles.contact}>
           <img width={18} src={telegramPng} alt="telegramPng" />
+          <a href="tel:+79897904681">
           <span className={styles.spanNumber}>+79897904681</span>
+          </a>
         </div>
       </div>
     </div>
