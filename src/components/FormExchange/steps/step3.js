@@ -6,10 +6,23 @@ import bankIcon from "../../../assets/icons/bank.png";
 import qrCodeImg from "../../../assets/icons/qr-code.png";
 
 import { Input } from "antd";
+import { useDispatch, useSelector } from "react-redux";
+import { createApplication, getNumberFiat, getPaymentByCrypt } from "../../../services";
+import { setApplicationIdForm, setIsLoadingForm } from "../../../store/applicationSlice";
 
-const Step3 = ({ nextStep }) => {
-  const [purse, setPurse] = useState("1MAUuLrH162bLX2y9t9LAZc6fNoz2sypWV");
-  const [sum, setSum] = useState("0.00204188 btc");
+const Step3 = ({ nextStep, reverse, setReverse }) => {
+  const dispatch = useDispatch()
+
+  const fromExchange = useSelector(state => state.application.fromExchange)
+  const inExchange = useSelector(state => state.application.inExchange)
+  const fromSum = useSelector(state => state.application.fromSum)
+  const inSum = useSelector(state => state.application.inSum)
+  const userMail = useSelector(state => state.application.userMail)
+  const userFullName = useSelector(state => state.application.userFullName)
+  const userRequisites = useSelector(state => state.application.userRequisites)
+
+  const [purse, setPurse] = useState(reverse? getNumberFiat(fromExchange) : getPaymentByCrypt(fromExchange));
+  const [sum, setSum] = useState(inSum);
 
   return (
     <div
@@ -19,15 +32,15 @@ const Step3 = ({ nextStep }) => {
       }}
       className={styles.wrapper}
     >
-      <span
-        style={{
-          fontWeight: 500,
-          fontSize: 20,
-          color: "#B7B7B7",
-        }}
-      >
-        Заявка 182882
-      </span>
+      {/*<span*/}
+      {/*  style={{*/}
+      {/*    fontWeight: 500,*/}
+      {/*    fontSize: 20,*/}
+      {/*    color: "#B7B7B7",*/}
+      {/*  }}*/}
+      {/*>*/}
+      {/*  Заявка 182882*/}
+      {/*</span>*/}
 
       <span
         style={{
@@ -55,7 +68,7 @@ const Step3 = ({ nextStep }) => {
             fontSize: 16,
           }}
         >
-          Вы меняете:{" "}
+          Вы меняете:
         </span>
 
         <div
@@ -71,7 +84,7 @@ const Step3 = ({ nextStep }) => {
               marginLeft: 16,
             }}
           >
-            <img src={cryptoIcon} alt="cryptoIcon" />
+            {/*<img src={cryptoIcon} alt="cryptoIcon" />*/}
             <span
               style={{
                 marginLeft: 8,
@@ -79,8 +92,7 @@ const Step3 = ({ nextStep }) => {
                 fontSize: 16,
               }}
             >
-              {" "}
-              0.00204188 btc
+              {fromSum + ' ' + fromExchange}
             </span>
           </div>
 
@@ -91,8 +103,7 @@ const Step3 = ({ nextStep }) => {
               fontSize: 16,
             }}
           >
-            {" "}
-            на{" "}
+            на
           </span>
 
           <div
@@ -101,16 +112,16 @@ const Step3 = ({ nextStep }) => {
               alignItems: "center",
             }}
           >
-            <img src={bankIcon} alt="bankIcon" />
+            {/*<img src={bankIcon} alt="bankIcon" />*/}
             <span
               style={{
-                marginLeft: 8,
+                // marginLeft: 8,
                 fontWeight: 500,
                 fontSize: 16,
               }}
             >
-              {" "}
-              2500 rub
+              {inSum + ' ' + inExchange}
+
             </span>
           </div>
         </div>
@@ -165,7 +176,7 @@ const Step3 = ({ nextStep }) => {
               color: "#0F1221",
             }}
           >
-            Кошелёк:
+            Реквизиты:
           </span>
           <Input
             className={styles.inputSmallText}
@@ -183,17 +194,17 @@ const Step3 = ({ nextStep }) => {
             marginBottom: 24,
           }}
         >
-          <span
-            style={{
-              fontSize: 16,
-              marginBottom: 8,
-              fontWeight: 500,
-              color: "#0F1221",
-            }}
-          >
-            QR-код:
-          </span>
-          <img src={qrCodeImg} alt="qr" />
+          {/*<span*/}
+          {/*  style={{*/}
+          {/*    fontSize: 16,*/}
+          {/*    marginBottom: 8,*/}
+          {/*    fontWeight: 500,*/}
+          {/*    color: "#0F1221",*/}
+          {/*  }}*/}
+          {/*>*/}
+          {/*  QR-код:*/}
+          {/*</span>*/}
+          {/*<img src={qrCodeImg} alt="qr" />*/}
         </div>
 
         <div
@@ -235,7 +246,21 @@ const Step3 = ({ nextStep }) => {
             style={{
               width: "100%",
             }}
-            onClick={() => nextStep(4)}
+            onClick={async () => {
+              nextStep(4)
+              dispatch(setIsLoadingForm(true))
+              createApplication({fromExchange,
+                inExchange,
+                fromSum,
+                inSum,
+                userMail,
+                userFullName,
+                userRequisites}).then(r => {
+                dispatch(setIsLoadingForm(false))
+                dispatch(setApplicationIdForm(r.data.id))
+
+              })
+            }}
           >
             Я оплатил
           </button>

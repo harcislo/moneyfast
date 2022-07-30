@@ -2,16 +2,23 @@ import React from "react";
 import styles from "./Step.module.css";
 import cryptoIcon from "../../../assets/icons/bitcoin.png";
 import bankIcon from "../../../assets/icons/bank.png";
+import { useSelector } from "react-redux";
+import { cancelApplication } from "../../../services";
 
-const Step4 = ({ nextStep }) => {
+const Step4 = ({ nextStep, reverse, setReverse }) => {
+  const fromExchange = useSelector(state => state.application.fromExchange)
+  const inExchange = useSelector(state => state.application.inExchange)
+  const fromSum = useSelector(state => state.application.fromSum)
+  const inSum = useSelector(state => state.application.inSum)
+  const idForm = useSelector(state => state.application.idForm)
   return (
     <div
       style={{
-        alignItems: "start",
+        alignItems: "center",
       }}
       className={styles.wrapper + " " + styles.step4Wrapper}
     >
-      <span className={styles.h1Text}>Заявка #182882 принята в обработку</span>
+      <span className={styles.h1Text}>{`Заявка #${idForm} принята в обработку`}</span>
 
       <div
         style={{
@@ -33,7 +40,7 @@ const Step4 = ({ nextStep }) => {
               alignItems: "center",
             }}
           >
-            <img src={cryptoIcon} alt="cryptoIcon" />
+            {/*<img src={cryptoIcon} alt="cryptoIcon" />*/}
             <span
               style={{
                 marginLeft: 8,
@@ -41,8 +48,7 @@ const Step4 = ({ nextStep }) => {
                 fontSize: 16,
               }}
             >
-              {" "}
-              0.00204188 btc
+              {fromSum + ' ' + fromExchange}
             </span>
           </div>
 
@@ -53,7 +59,6 @@ const Step4 = ({ nextStep }) => {
               fontSize: 16,
             }}
           >
-            {" "}
             на{" "}
           </span>
 
@@ -63,16 +68,15 @@ const Step4 = ({ nextStep }) => {
               alignItems: "center",
             }}
           >
-            <img src={bankIcon} alt="bankIcon" />
+            {/*<img src={bankIcon} alt="bankIcon" />*/}
             <span
               style={{
-                marginLeft: 8,
+                // marginLeft: 8,
                 fontWeight: 500,
                 fontSize: 16,
               }}
             >
-              {" "}
-              2500 rub
+              {inSum + ' ' + inExchange}
             </span>
           </div>
         </div>
@@ -122,7 +126,10 @@ const Step4 = ({ nextStep }) => {
       </div>
 
       <div className={styles.btn}>
-        <button onClick={() => nextStep(1)}>Отменить заявку</button>
+        <button onClick={() => {
+          cancelApplication(idForm).then(() => console.log('Заявка отменена'))
+          nextStep(1)
+        }}>Отменить заявку</button>
       </div>
     </div>
   );

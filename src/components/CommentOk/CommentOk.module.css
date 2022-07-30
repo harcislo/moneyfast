@@ -1,0 +1,17 @@
+.wrapper {
+    margin: 60px;
+}
+.h1Text {
+    font-size: 32px;
+    font-weight: 700;
+    color: #0f1221;
+}
+@media (max-width: 700px) {
+    .wrapper {
+        margin: 60px 16px;
+    }
+    .h1Text {
+        font-size: 28px;
+        font-weight: 700;
+    }
+}

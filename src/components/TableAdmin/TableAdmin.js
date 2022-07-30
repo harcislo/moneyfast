@@ -1,15 +1,28 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from './TableAdmin.module.css'
 import Filters from "./Filters/Filters";
 import TableUi from "./Table/Table";
+import { getApplicationsByStatus } from "../../services";
+import { useDispatch, useSelector } from "react-redux";
+import { setApplications } from "../../store/applicationSlice";
 
 const TableAdmin = () => {
-
-
-  //filter = 'all'||'confirmed'||'inProcessing'||'rejected'||'completed'
+  const applications = useSelector(state => state.application.applications)
+  const dispatch = useDispatch()
   const [filter, setFilter] = useState('all')
-  const [data, setData] = useState([])
   const [page, setPage] = useState(1)
+  useEffect(() => {
+    getApplicationsByStatus(filter).then(r => {
+      // const newArray = r.data.map(el =>
+      const newArray = r.data.map(el => {
+        return {
+          ...el, sumExchange: [el.fromSum, el.fromExchange, el.inSum, el.inExchange],statusAndId: [el.status, el.id]
+        }
+      })
+      console.log(newArray)
+      dispatch(setApplications(newArray))
+    })
+  }, [filter])
 
   return (
     <div className={styles.wrapper}>

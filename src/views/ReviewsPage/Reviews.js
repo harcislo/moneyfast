@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import styles from './Reviews.module.css'
 import Comment from "../../components/Сomment/Comment";
-import { comments } from "../../data";
 import { Input, Pagination, Rate } from "antd";
 
 import formImg from '../../assets/icons/Survey-amico.png'
+import { getCommentConfirmedAdmin, setCommentsClient } from "../../services";
 const { TextArea } = Input;
 
 
@@ -12,6 +12,14 @@ const Reviews = () => {
   const [name, setName] = useState('')
   const [text, setText] = useState('')
   const [rating, setRating] = useState(0)
+
+  const [comments, setComments] = useState([])
+  useEffect(() => {
+
+    getCommentConfirmedAdmin().then(r => setComments(r.data))
+
+
+  }, [])
 
   useEffect(() => {
     setIsDisabled(
@@ -32,16 +40,16 @@ const Reviews = () => {
         }} className={styles.comments}>
           {comments.map((el, i) => <Comment name={el.name} rating={el.rating} date={el.date} text={el.text}/>)}
         </div>
-        <div className={styles.pagination}>
-          <Pagination
-            style={{
-              display: 'flex',
-              justifyContent: 'center'
-            }}
-            onChange={(value) => console.log(value)}
-            simple={window.innerWidth<700}
-            pageSizeOptions={[]} pageSize={8} defaultCurrent={1} total={500} />
-        </div>
+        {/*<div className={styles.pagination}>*/}
+        {/*  <Pagination*/}
+        {/*    style={{*/}
+        {/*      display: 'flex',*/}
+        {/*      justifyContent: 'center'*/}
+        {/*    }}*/}
+        {/*    onChange={(value) => console.log(value)}*/}
+        {/*    simple={window.innerWidth<700}*/}
+        {/*    pageSizeOptions={[]} pageSize={8} defaultCurrent={1} total={500} />*/}
+        {/*</div>*/}
       </div>
       <div className={styles.form}>
         <img style={{
@@ -91,6 +99,12 @@ const Reviews = () => {
             setText('')
             setName('')
             setRating(0)
+            setCommentsClient({
+              userName: name,
+              text: text,
+              rating: rating,
+              status: "isProcessing"
+            }).then(r => console.log(r))
           }}
         >
           Оставить отзыв

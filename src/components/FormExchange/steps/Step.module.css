@@ -90,7 +90,11 @@
     margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
 }
 
-@media (max-width: 1040px) {
+.rate {
+    bottom: -30px;
+}
+
+@media (max-width: 1140px) {
     .fields {
         flex-direction: column;
     }
@@ -121,6 +125,11 @@
 
     .h1Text {
         font-size: 24px;
+
+    }
+
+    .rate {
+        bottom: -50px;
 
     }
 

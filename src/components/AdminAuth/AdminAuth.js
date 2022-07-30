@@ -4,16 +4,17 @@ import { Button, Form, Input } from "antd";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setToken } from "../../store/userSlice";
+import { loginAdmin } from "../../services";
 
 
 const AdminAuth = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
-  const onFinish = (values) => {
+  const onFinish = async (values) => {
     console.log('Success:', values);
-    const fakeToken = Date.now()
-    localStorage.setItem('token', `${fakeToken}`)
-    dispatch(setToken(`${fakeToken}`))
+    const token = await loginAdmin({email: values.login, password: values.password})
+    localStorage.setItem('token', `${token.data.token}`)
+    dispatch(setToken(`${token}`))
     navigate("/admin")
   };
 

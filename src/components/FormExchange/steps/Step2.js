@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from "react";
 import styles from "./Step.module.css";
 import { Input } from "antd";
+import { useDispatch, useSelector } from "react-redux";
+import { setUserFullName, setUserMail, setUserRequisites } from "../../../store/applicationSlice";
 
-const Step2 = ({ nextStep }) => {
+const Step2 = ({ nextStep, reverse, setReverse }) => {
   const [email, setEmail] = useState("");
   const [fio, setFio] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
+  const fromExchange = useSelector(state => state.application.fromExchange)
+  const dispatch = useDispatch()
 
   const [isDisabled, setIsDisabled] = useState(true);
   useEffect(() => {
@@ -61,7 +65,7 @@ const Step2 = ({ nextStep }) => {
             style={{
               marginTop: 16,
             }}
-            placeholder="Введите номер карты"
+            placeholder={reverse ? "Введите номер кошелька" : "Введите номер карты"}
           />
 
           <div
@@ -77,7 +81,12 @@ const Step2 = ({ nextStep }) => {
                 backgroundColor: isDisabled ? "#B7B7B7" : undefined,
                 width: "100%",
               }}
-              onClick={() => nextStep(3)}
+              onClick={() => {
+                dispatch(setUserMail(email))
+                dispatch(setUserFullName(fio))
+                dispatch(setUserRequisites(phoneNumber))
+                nextStep(3)
+              }}
             >
               Обменять сейчас
             </button>
