@@ -108,7 +108,7 @@ export const getPaymentByCrypt = (crypt) => {
 
 export const getNumberFiat = (fiat) => {
   let fiatNumber = "неизвестный кошелёк";
-  if (fiat === "RUB") fiatNumber = "Кошелёк для RUB";
+  if (fiat === "RUB") fiatNumber = "79253533782";
   if (fiat === "BYR") fiatNumber = "Кошелёк для BYR";
   if (fiat === "KZT") fiatNumber = "Кошелёк для KZT";
 
