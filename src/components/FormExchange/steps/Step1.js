@@ -20,7 +20,7 @@ import tengeIcon from '../../../assets/icons/tenge.png'
 import { Input, Select } from "antd";
 import { useDispatch } from "react-redux";
 import { setFromExchange, setFromSum, setInExchange, setInSum } from "../../../store/applicationSlice";
-import { getExchangeRate } from "../../../services";
+import { getExchangeRate, getExchangeUsdRub } from "../../../services";
 
 const { Option } = Select;
 

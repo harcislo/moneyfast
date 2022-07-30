@@ -1,10 +1,31 @@
 import axios from "axios";
 import { apiUrl, coinLayerUrl } from "./constants";
 
-export const getExchangeRate = async (currency, target) => {
+// export const getExchangeRate = async (currency, target) => {
+//   // const rate = await axios.get(`${coinLayerUrl}&target=${target}`);
+//   const rate = await axios.get(`${coinLayerUrl}&target=RUB`);
+//   return rate.data.rates[currency];
+// };
+export const getExchangeRate = async (from,to) => {
   // const rate = await axios.get(`${coinLayerUrl}&target=${target}`);
-  const rate = await axios.get(`${coinLayerUrl}&target=RUB`);
-  return rate.data.rates[currency];
+  const rate = await axios.get(`https://min-api.cryptocompare.com/data/price?fsym=${from}&tsyms=${to}`);
+  return rate.data[to]
+};
+export const getExchangeUsdRub = async (targetFrom) => {
+  // const rate = await axios.get(`${coinLayerUrl}&target=${target}`);
+  const myHeaders = new Headers();
+  myHeaders.append("apikey", "hDt45FtyMsdhMzlOv3buikWBhBzBYxCd");
+
+  let requestOptions = {
+    method: 'GET',
+    redirect: 'follow',
+    headers: myHeaders
+  };
+
+  fetch(`https://api.apilayer.com/currency_data/convert?to=RUB&from=USD&amount=1`, requestOptions)
+    .then(response => response.text())
+    .then(result => console.log(JSON.parse(result).result))
+    .catch(error => console.log('error', error));
 };
 // fromExchange(pin):"ETH"
 // inExchange(pin):"BYR"
