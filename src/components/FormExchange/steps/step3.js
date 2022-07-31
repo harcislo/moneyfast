@@ -8,9 +8,9 @@ import qrCodeImg from "../../../assets/icons/qr-code.png";
 import { Input } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { createApplication, getNumberFiat, getPaymentByCrypt } from "../../../services";
-import { setApplicationIdForm, setIsLoadingForm } from "../../../store/applicationSlice";
+import { setApplicationIdForm, setIsLoadingForm, setStep } from "../../../store/applicationSlice";
 
-const Step3 = ({ nextStep, reverse, setReverse }) => {
+const Step3 = ({reverse, setReverse }) => {
   const dispatch = useDispatch()
 
   const fromExchange = useSelector(state => state.application.fromExchange)
@@ -247,7 +247,7 @@ const Step3 = ({ nextStep, reverse, setReverse }) => {
               width: "100%",
             }}
             onClick={async () => {
-              nextStep(4)
+              dispatch(setStep(4))
               dispatch(setIsLoadingForm(true))
               createApplication({fromExchange,
                 inExchange,

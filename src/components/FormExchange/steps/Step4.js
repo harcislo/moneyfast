@@ -2,10 +2,12 @@ import React from "react";
 import styles from "./Step.module.css";
 import cryptoIcon from "../../../assets/icons/bitcoin.png";
 import bankIcon from "../../../assets/icons/bank.png";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { cancelApplication } from "../../../services";
+import { setInitialState } from "../../../store/applicationSlice";
 
-const Step4 = ({ nextStep, reverse, setReverse }) => {
+const Step4 = ({reverse, setReverse }) => {
+  const dispatch = useDispatch()
   const fromExchange = useSelector(state => state.application.fromExchange)
   const inExchange = useSelector(state => state.application.inExchange)
   const fromSum = useSelector(state => state.application.fromSum)
@@ -18,7 +20,7 @@ const Step4 = ({ nextStep, reverse, setReverse }) => {
       }}
       className={styles.wrapper + " " + styles.step4Wrapper}
     >
-      <span className={styles.h1Text}>{`Заявка #${idForm} принята в обработку`}</span>
+      <span className={styles.h1Text}>{`Заявка ${idForm?'#'+idForm:''} принята в обработку`}</span>
 
       <div
         style={{
@@ -128,7 +130,7 @@ const Step4 = ({ nextStep, reverse, setReverse }) => {
       <div className={styles.btn}>
         <button onClick={() => {
           cancelApplication(idForm).then(() => console.log('Заявка отменена'))
-          nextStep(1)
+          dispatch(setInitialState())
         }}>Отменить заявку</button>
       </div>
     </div>

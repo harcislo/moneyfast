@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import styles from "./Step.module.css";
 import { Input } from "antd";
 import { useDispatch, useSelector } from "react-redux";
-import { setUserFullName, setUserMail, setUserRequisites } from "../../../store/applicationSlice";
+import { setStep, setUserFullName, setUserMail, setUserRequisites } from "../../../store/applicationSlice";
 
-const Step2 = ({ nextStep, reverse, setReverse }) => {
+const Step2 = ({ reverse, setReverse }) => {
   const [email, setEmail] = useState("");
   const [fio, setFio] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -85,7 +85,7 @@ const Step2 = ({ nextStep, reverse, setReverse }) => {
                 dispatch(setUserMail(email))
                 dispatch(setUserFullName(fio))
                 dispatch(setUserRequisites(phoneNumber))
-                nextStep(3)
+                dispatch(setStep(3))
               }}
             >
               Обменять сейчас
