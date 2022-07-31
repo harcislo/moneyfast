@@ -6,6 +6,7 @@ import burgerIcon from "../../../assets/icons/burger.png";
 import closeIcon from "../../../assets/icons/close.png";
 import { useDispatch, useSelector } from "react-redux";
 import { removeToken } from "../../../store/userSlice";
+import { setInitialState } from "../../../store/applicationSlice";
 
 const Header = () => {
   const [burgerActive, setBurgerActive] = useState(false);
@@ -15,7 +16,7 @@ const Header = () => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.content}>
-        <Link to={'/'} className={styles.logo}>moneyfast</Link>
+        <Link onClick={() => dispatch(setInitialState())} to={'/'} className={styles.logo}>moneyfast</Link>
         <div style={{ top: burgerActive ? 0 : "-100%" }} className={styles.nav}>
           <div className={styles.navLinks}>
             <NavLink

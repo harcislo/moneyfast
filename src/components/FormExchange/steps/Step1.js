@@ -90,7 +90,12 @@ const Step1 = ({ reverse, setReverse }) => {
                 dropdownStyle={{
                   borderRadius: 15
                 }}
-                onChange={(value) => setSelectBank(value)}
+                onChange={(value) => {
+                  setSelectBank(value)
+                  setSumBank('')
+                  setSumCrypts('')
+                }
+              }
                 placeholder="Выберите фиатную валюту"
                 className={styles.select}
                 size={"large"}
@@ -165,7 +170,11 @@ const Step1 = ({ reverse, setReverse }) => {
                 dropdownStyle={{
                   borderRadius: 15
                 }}
-                onChange={(value) => setSelectCrypt(value)}
+                onChange={(value) => {
+                  setSelectCrypt(value)
+                  setSumBank('')
+                  setSumCrypts('')
+                }}
                 // showSearch
                 placeholder="Выберите криптовалюту"
                 className={styles.select}
