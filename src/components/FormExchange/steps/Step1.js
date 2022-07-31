@@ -94,6 +94,7 @@ const Step1 = ({ reverse, setReverse }) => {
                   setSelectBank(value)
                   setSumBank('')
                   setSumCrypts('')
+                  setRate(null)
                 }
               }
                 placeholder="Выберите фиатную валюту"
@@ -174,6 +175,7 @@ const Step1 = ({ reverse, setReverse }) => {
                   setSelectCrypt(value)
                   setSumBank('')
                   setSumCrypts('')
+                  setRate(null)
                 }}
                 // showSearch
                 placeholder="Выберите криптовалюту"
@@ -260,7 +262,12 @@ const Step1 = ({ reverse, setReverse }) => {
                 dropdownStyle={{
                   borderRadius: 15
                 }}
-                onChange={(value) => setSelectCrypt(value)}
+                onChange={(value) => {
+                  setSelectCrypt(value)
+                  setSumBank('')
+                  setSumCrypts('')
+                  setRate(null)
+                }}
                 // showSearch
                 placeholder="Выберите криптовалюту"
                 className={styles.select}
@@ -332,7 +339,12 @@ const Step1 = ({ reverse, setReverse }) => {
                 dropdownStyle={{
                   borderRadius: 15
                 }}
-                onChange={(value) => setSelectBank(value)}
+                onChange={(value) => {
+                  setSelectBank(value)
+                  setSumBank('')
+                  setSumCrypts('')
+                  setRate(null)
+                }}
                 placeholder="Выберите фиатную валюту"
                 className={styles.select}
                 size={"large"}
