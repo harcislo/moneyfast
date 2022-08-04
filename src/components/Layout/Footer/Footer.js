@@ -19,8 +19,8 @@ const Footer = () => {
       <div className={styles.footerBlock}>
         <div>
           <img src={emailIcon} alt="email" />
-          <a href="mailto:Guuworking@proton.me">
-            <span className={styles.contactText}>Guuworking@proton.me</span>
+          <a href="mailto:support_moneyfast@proton.me">
+            <span className={styles.contactText}>support_moneyfast@proton.me</span>
           </a>
         </div>
         <div style={{

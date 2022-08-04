@@ -9,7 +9,7 @@ import { apiUrl, coinLayerUrl } from "./constants";
 export const getExchangeRate = async (from,to) => {
   // const rate = await axios.get(`${coinLayerUrl}&target=${target}`);
   const rate = await axios.get(`https://min-api.cryptocompare.com/data/price?fsym=${from}&tsyms=${to}`);
-  return Math.round(rate.data[to]*1.15)
+  return Math.round(rate.data[to]*1.18)
 };
 export const getExchangeUsdRub = async (targetFrom) => {
   // const rate = await axios.get(`${coinLayerUrl}&target=${target}`);
