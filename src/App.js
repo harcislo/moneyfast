@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setToken } from "./store/userSlice";
 import NotAuth from "./components/NotAuth/NotAuth";
 import ApplicationAdminPage from "./views/ApplicationAdminPage/ApplicationAdminPage";
+import DataProcessingPage from "./views/DataProcessingPage/DataProcessingPage";
 
 function App() {
   const token = useSelector(state => state.user.token)
@@ -34,6 +35,7 @@ function App() {
               <Route path="/admin" element={token || localStorage.getItem('token') ? <AdminPage /> :  <Navigate to="/admin/auth" replace={true} />}/>
               {/*<Route path="/admin:id" element={token || localStorage.getItem('token') ? <div>Тест</div> :  <Navigate to="/admin/auth" replace={true} />}/>*/}
               <Route path="/admin/:id" element={<ApplicationAdminPage/>}/>
+              <Route path="/dataProcessing" element={<DataProcessingPage/>}/>
             </Routes>
       </Layout>
     </BrowserRouter>

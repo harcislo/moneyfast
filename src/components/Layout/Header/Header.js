@@ -8,15 +8,18 @@ import { useDispatch, useSelector } from "react-redux";
 import { removeToken } from "../../../store/userSlice";
 import { setInitialState } from "../../../store/applicationSlice";
 
+import telegramIcon from "../../../assets/icons/telegramIcon.png";
+
 const Header = () => {
   const [burgerActive, setBurgerActive] = useState(false);
-  const token = useSelector(state => state.user.token)
-  const dispatch = useDispatch()
+  const token = useSelector(state => state.user.token);
+  const dispatch = useDispatch();
 
   return (
     <div className={styles.wrapper}>
       <div className={styles.content}>
-        <Link onClick={() => dispatch(setInitialState())} to={'/'} className={styles.logo}>moneyfast</Link>
+        <Link onClick={() => dispatch(setInitialState())} to={"/"} className={styles.logo}>moneyfast</Link>
+
         <div style={{ top: burgerActive ? 0 : "-100%" }} className={styles.nav}>
           <div className={styles.navLinks}>
             <NavLink
@@ -27,7 +30,7 @@ const Header = () => {
                 if (isActive && burgerActive) {
                   return {
                     fontWeight: 700,
-                    color: "#ffffff",
+                    color: "#ffffff"
                   };
                 } else if (isActive && !burgerActive) {
                   return { fontWeight: 500 };
@@ -44,7 +47,7 @@ const Header = () => {
                 if (isActive && burgerActive) {
                   return {
                     fontWeight: 700,
-                    color: "#ffffff",
+                    color: "#ffffff"
                   };
                 } else if (isActive && !burgerActive) {
                   return { fontWeight: 500 };
@@ -61,7 +64,7 @@ const Header = () => {
                 if (isActive && burgerActive) {
                   return {
                     fontWeight: 700,
-                    color: "#ffffff",
+                    color: "#ffffff"
                   };
                 } else if (isActive && !burgerActive) {
                   return { fontWeight: 500 };
@@ -70,7 +73,7 @@ const Header = () => {
             >
               Отзывы
             </NavLink>
-            { (token || localStorage.getItem('token')) &&
+            {(token || localStorage.getItem("token")) &&
               <NavLink
                 onClick={() => setBurgerActive(false)}
                 to="/admin"
@@ -79,7 +82,7 @@ const Header = () => {
                   if (isActive && burgerActive) {
                     return {
                       fontWeight: 700,
-                      color: "#ffffff",
+                      color: "#ffffff"
                     };
                   } else if (isActive && !burgerActive) {
                     return { fontWeight: 500 };
@@ -90,21 +93,21 @@ const Header = () => {
               </NavLink>
             }
 
-            { (token || localStorage.getItem('token')) &&
+            {(token || localStorage.getItem("token")) &&
               <NavLink
 
                 onClick={() => {
-                  setBurgerActive(false)
-                  localStorage.removeItem('token')
-                  dispatch(removeToken())
+                  setBurgerActive(false);
+                  localStorage.removeItem("token");
+                  dispatch(removeToken());
                 }}
                 to="/"
-                className={styles.link + ' ' + styles.logout}
+                className={styles.link + " " + styles.logout}
                 style={({ isActive }) => {
                   if (isActive && burgerActive) {
                     return {
                       fontWeight: 700,
-                      color: "#ffffff",
+                      color: "#ffffff"
                     };
                   } else if (isActive && !burgerActive) {
                     return { fontWeight: 500 };
@@ -113,7 +116,20 @@ const Header = () => {
               >
                 Выйти
               </NavLink>
+
             }
+
+            {
+              !burgerActive ? <a target="_blank" style={{
+                  position: "absolute",
+                  right: 10
+                }} href={'https://t.me/money_support_fast'}>
+                  <img width={32} src={telegramIcon} alt="telegramIcon" />
+                </a> :
+                <a target="_blank" href={'https://t.me/money_support_fast'}><img width={32} src={telegramIcon} alt="telegramIcon" /></a>
+            }
+
+
           </div>
         </div>
         <div className={styles.burger}>

@@ -1,23 +1,25 @@
 import React, { useEffect, useState } from "react";
 import styles from "./Step.module.css";
-import { Input } from "antd";
+import { Checkbox, Input } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { setStep, setUserFullName, setUserMail, setUserRequisites } from "../../../store/applicationSlice";
+import { Link } from "react-router-dom";
 
 const Step2 = ({ reverse, setReverse }) => {
   const [email, setEmail] = useState("");
   const [fio, setFio] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const fromExchange = useSelector(state => state.application.fromExchange)
+  const [isDataProcessing, setIsDataProcessing] = useState(false)
   const dispatch = useDispatch()
 
   const [isDisabled, setIsDisabled] = useState(true);
   useEffect(() => {
     setIsDisabled(
-      (email.length === 0 || fio.length === 0 || phoneNumber.length === 0) &&
+      (email.length === 0 || fio.length === 0 || phoneNumber.length === 0 || isDataProcessing === false) &&
         true
     );
-  }, [email, fio, phoneNumber]);
+  }, [email, fio, phoneNumber, isDataProcessing]);
 
   return (
     <div
@@ -67,6 +69,17 @@ const Step2 = ({ reverse, setReverse }) => {
             }}
             placeholder={reverse ? "Введите номер кошелька" : "Введите номер карты"}
           />
+
+          <Checkbox style={{
+            width: '100%',
+            marginTop: 16,
+
+          }} onChange={() =>(setIsDataProcessing((prevState) => !prevState))}>
+            Я согласен на обработку персональных данных
+            принимаю <Link to='/dataProcessing'><b>правила обмена</b></Link>
+
+          </Checkbox>
+
 
           <div
             style={{

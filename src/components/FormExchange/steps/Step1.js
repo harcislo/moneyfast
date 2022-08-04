@@ -11,6 +11,14 @@ import tronIcon from "../../../assets/icons/tron.png";
 import stellarIcon from "../../../assets/icons/stellar.png";
 import dashIcon from "../../../assets/icons/dashImg.png";
 
+import sberIcon from "../../../assets/icons/sberIcon.svg";
+import alphaIcon from "../../../assets/icons/alphaIcon.svg";
+import tinkofIcon from "../../../assets/icons/tinkoffIcon.svg";
+import tkcqrIcon from "../../../assets/icons/tinkoffIcon.svg";
+import vtbIcon from "../../../assets/icons/vtbIcon.svg";
+import visamasterIcon from "../../../assets/icons/credit-card.png";
+import anivayIcon from "../../../assets/icons/anivayBank.png";
+
 
 import rubIcon from "../../../assets/icons/rub.png";
 import belRubIcon from "../../../assets/icons/belrub.png";
@@ -38,13 +46,21 @@ const Step1 = ({ reverse, setReverse }) => {
   ]);
 
   const [banks, setBanks] = useState([
-    { id: "RUB", img: rubIcon, name: "Русский рубль" }
+    // { id: "RUB", img: rubIcon, name: "Русский рубль" }
     // {id: 'BYR', img: belRubIcon, name: "Беллоруский рубль" },
     // {id: 'KZT', img: tengeIcon, name: "Тенге" },
+    { id: "SBER", img: sberIcon, name: "Cбербанк RUB" },
+    { id: "ALPHA", img: alphaIcon, name: "Альфа-банк RUB" },
+    { id: "TINKOFF", img: tinkofIcon, name: "Тинькофф RUB" },
+    { id: "TKCQR", img: tkcqrIcon, name: "TKC QR-коды RUB" },
+    { id: "VTB", img: vtbIcon, name: "ВТБ RUB" },
+    { id: "VISAMASTERCARD", img: visamasterIcon, width: 32, name: "Visa/MasterCard RUB" },
+    { id: "ANIVAYBANK", img: anivayIcon, width: 32, name: "Любой банк RUB" }
+
   ]);
 
-  const [selectCrypt, setSelectCrypt] = useState("");
-  const [selectBank, setSelectBank] = useState("RUB");
+  const [selectCrypt, setSelectCrypt] = useState("BTC");
+  const [selectBank, setSelectBank] = useState("SBER");
   const [sumCrypts, setSumCrypts] = useState("");
   const [sumBank, setSumBank] = useState("");
 
@@ -53,8 +69,9 @@ const Step1 = ({ reverse, setReverse }) => {
   const [rate, setRate] = useState(null);
 
   useEffect(() => {
-    selectCrypt && selectBank && getExchangeRate(selectCrypt, selectBank).then(r => setRate(r));
-  }, [selectCrypt, selectBank]);
+    // selectCrypt && selectBank && getExchangeRate(selectCrypt, selectBank).then(r => setRate(r));
+    getExchangeRate(selectCrypt, "RUB").then(r => setRate(r));
+  }, [reverse, selectCrypt, selectBank]);
 
 
   useEffect(() => {
@@ -62,7 +79,9 @@ const Step1 = ({ reverse, setReverse }) => {
       (selectCrypt.length === 0 ||
         selectBank.length === 0 ||
         sumCrypts.length === 0 ||
-        sumBank.length === 0) &&
+        sumBank.length === 0 ||
+        Number(sumBank)<10000
+      ) &&
       true
     );
   }, [selectCrypt, selectBank, sumCrypts, sumBank]);
@@ -85,18 +104,23 @@ const Step1 = ({ reverse, setReverse }) => {
               }}
               className={styles.changeColumn}
             >
+              <div style={{
+                marginBottom: 8
+              }
+              } className={styles.h1Text}>Отдаете
+              </div>
               <Select
                 value={selectBank || "Выберите фиатную валюту"}
                 dropdownStyle={{
                   borderRadius: 15
                 }}
                 onChange={(value) => {
-                  setSelectBank(value)
-                  setSumBank('')
-                  setSumCrypts('')
-                  setRate(null)
+                  setSelectBank(value);
+                  setSumBank("");
+                  setSumCrypts("");
+                  setRate(null);
                 }
-              }
+                }
                 placeholder="Выберите фиатную валюту"
                 className={styles.select}
                 size={"large"}
@@ -122,13 +146,13 @@ const Step1 = ({ reverse, setReverse }) => {
                     key={el.name}
                     value={el.id}
                   >
-                    <img
-                      style={{
-                        marginRight: 8
-                        // width: 25
-                      }}
-                      src={el.img}
-                      alt="icon"
+                    <img width={el.width || 48}
+                         style={{
+                           marginRight: 8
+                           // width: 25
+                         }}
+                         src={el.img}
+                         alt="icon"
                     />
                     {el.name}
                   </Option>
@@ -136,7 +160,7 @@ const Step1 = ({ reverse, setReverse }) => {
               </Select>
 
               <Input
-                disabled={!rate || selectCrypt.length===0}
+                disabled={!rate || selectCrypt.length === 0}
 
                 className={styles.input}
                 value={sumBank}
@@ -144,7 +168,7 @@ const Step1 = ({ reverse, setReverse }) => {
                 style={{
                   marginTop: 24
                 }}
-                placeholder="Введите сумму"
+                placeholder="Минимально: 10000 RUB"
                 onChange={(e) => {
                   setSumBank(e.target.value);
                   rate && setSumCrypts((e.target.value / rate).toFixed(7));
@@ -161,21 +185,26 @@ const Step1 = ({ reverse, setReverse }) => {
                     color: "#0F1221"
                   }}
                 >
-            {`Курс обмена: 1 ${selectCrypt} – ${rate} ${selectBank}`}
+            {`Курс обмена: 1 ${selectCrypt} – ${rate} ${"RUB"}`}
           </span>
               }
             </div>
             : <div className={styles.changeColumn}>
+              <div style={{
+                marginBottom: 8
+              }
+              } className={styles.h1Text}>Отдаете
+              </div>
               <Select
                 value={selectCrypt || "Выберите криптовалюту"}
                 dropdownStyle={{
                   borderRadius: 15
                 }}
                 onChange={(value) => {
-                  setSelectCrypt(value)
-                  setSumBank('')
-                  setSumCrypts('')
-                  setRate(null)
+                  setSelectCrypt(value);
+                  setSumBank("");
+                  setSumCrypts("");
+                  setRate(null);
                 }}
                 // showSearch
                 placeholder="Выберите криптовалюту"
@@ -204,7 +233,7 @@ const Step1 = ({ reverse, setReverse }) => {
                     value={el.id}
                   >
                     <img
-                      width={32}
+                      width={el.width || 32}
                       style={{
                         marginRight: 8
                         // width: 25
@@ -219,7 +248,7 @@ const Step1 = ({ reverse, setReverse }) => {
 
               <Input
                 className={styles.input}
-                disabled={!rate || selectCrypt.length===0}
+                disabled={!rate || selectCrypt.length === 0}
 
                 value={sumCrypts}
                 onChange={(e) => {
@@ -233,6 +262,7 @@ const Step1 = ({ reverse, setReverse }) => {
                 placeholder="Введите сумму"
                 type={"number"}
               />
+
             </div>
         }
 
@@ -257,16 +287,21 @@ const Step1 = ({ reverse, setReverse }) => {
         {
           reverse
             ? <div className={styles.changeColumn}>
+              <div style={{
+                marginBottom: 8
+              }
+              } className={styles.h1Text}>Получаете
+              </div>
               <Select
                 value={selectCrypt || "Выберите криптовалюту"}
                 dropdownStyle={{
                   borderRadius: 15
                 }}
                 onChange={(value) => {
-                  setSelectCrypt(value)
-                  setSumBank('')
-                  setSumCrypts('')
-                  setRate(null)
+                  setSelectCrypt(value);
+                  setSumBank("");
+                  setSumCrypts("");
+                  setRate(null);
                 }}
                 // showSearch
                 placeholder="Выберите криптовалюту"
@@ -296,7 +331,7 @@ const Step1 = ({ reverse, setReverse }) => {
 
                   >
                     <img
-                      width={32}
+                      width={el.width || 32}
                       style={{
                         marginRight: 8
                         // width: 25
@@ -310,7 +345,7 @@ const Step1 = ({ reverse, setReverse }) => {
               </Select>
 
               <Input
-                disabled={!rate || selectCrypt.length===0}
+                disabled={!rate || selectCrypt.length === 0}
 
                 className={styles.input}
                 value={sumCrypts}
@@ -334,16 +369,21 @@ const Step1 = ({ reverse, setReverse }) => {
               }}
               className={styles.changeColumn}
             >
+              <div style={{
+                marginBottom: 8
+              }
+              } className={styles.h1Text}>Получаете
+              </div>
               <Select
                 value={selectBank || "Выберите фиатную валюту"}
                 dropdownStyle={{
                   borderRadius: 15
                 }}
                 onChange={(value) => {
-                  setSelectBank(value)
-                  setSumBank('')
-                  setSumCrypts('')
-                  setRate(null)
+                  setSelectBank(value);
+                  setSumBank("");
+                  setSumCrypts("");
+                  setRate(null);
                 }}
                 placeholder="Выберите фиатную валюту"
                 className={styles.select}
@@ -371,6 +411,7 @@ const Step1 = ({ reverse, setReverse }) => {
                     value={el.id}
                   >
                     <img
+                      width={el.width || 48}
                       style={{
                         marginRight: 8
                         // width: 25
@@ -384,7 +425,7 @@ const Step1 = ({ reverse, setReverse }) => {
               </Select>
 
               <Input
-                disabled={!rate || selectCrypt.length===0}
+                disabled={!rate || selectCrypt.length === 0}
 
                 className={styles.input}
                 value={sumBank}
@@ -392,7 +433,7 @@ const Step1 = ({ reverse, setReverse }) => {
                 style={{
                   marginTop: 24
                 }}
-                placeholder="Введите сумму"
+                placeholder="Минимально: 10000 RUB"
                 onChange={(e) => {
                   setSumBank(e.target.value);
                   rate && setSumCrypts((e.target.value / rate).toFixed(7));
@@ -410,7 +451,7 @@ const Step1 = ({ reverse, setReverse }) => {
                     color: "#0F1221"
                   }}
                 >
-            {`Курс обмена: 1 ${selectCrypt} – ${rate} ${selectBank}`}
+            {`Курс обмена: 1 ${selectCrypt} – ${rate} ${"RUB"}`}
           </span>
               }
 
